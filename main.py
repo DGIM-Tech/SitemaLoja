@@ -5,58 +5,54 @@ from Categoria import Categoria
 from Produto import Produto
 from Carrinho import Carro
 from GereciaLoja import *
-menu()
-
-c = Cliente("Maria", "123", "mariana",  "1")
-
-g = Gerente("gerson", '123' , "gerson Breno", "2")
-g.Login("gerson", "123")
 
 
-c1 = Categoria("eletronicos")
-c2 = Categoria("teste")
+from GereciaLoja import GereciaLoja
+from Gerente import Gerente
 
-p1 = Produto(1, "celiular", "980", "celular simples", "garintia de um ano", c1, g)
-p2 = Produto("2", "noor", "980", "celular simples", "garintia de um ano", c1, g)
-c1.AdcionarProduto(p1)
-c.adcionarProdutos(p1)
-c.adcionarProdutos(p2)
+gl = GereciaLoja()
+gerentes = Gerente()  # Cria uma instância fora do loop
 
-# p1.AtualizarProdutos("celular", "1000")
-# c.carro.RelizarComprar(1)
+while True:
+    gl.menu()
+    op = input("Escolha uma opção acima: ")
 
-c.carro.ExibirProdutos()
-# c.carro.RelizarComprar("2")
-# 
-# total = c.carro.calcularValorTotal()
-# print(f"total {total}")
+    if op == '1':
+        while True:
+            gl.menu_gerente()
+            op_gerente = input("Escolha uma opção acima: ")
+
+            if op_gerente == '1':
+                nome = input("Digite o seu nome: ")
+                cpf = input("Digite o seu cpf: ")
+                usuario = input("Crie o seu nome de usuário: ")
+                senha = input("Crie a sua senha: ")
+               
+                gl.CadastrarGerente(usuario, nome, senha, cpf)
+
+            elif op_gerente == '2':
+                usuario1 = input("Digite seu nome de usuário: ")
+                senha1 = input("Digite sua senha: ")
+                gl.Login(usuario1, senha1)
+
+            elif op_gerente == '3':
+                break
+
+    elif op == '2':
+        while True:
+            gl.menu_cliente()
+            op_cliente = input("Escolha uma opção acima: ")
+            if op_cliente == '1':
+                nome = input("Digite o seu nome: ")
+                cpf = input("Digite o seu cpf: ")
+                usuario = input("Crie o seu nome de usuário: ")
+                senha = input("Crie a sua senha: ")
+                gl.CadastrarCliente(usuario, nome, senha, cpf)
+
+            elif op_cliente == '4':
+                break
 
 
-
-
-
-
-
-
-# c2.RemoverCategoria("t")
-# c1.RemoverCategoria("eletronicos")
-# c1.ListaProduto()
-# c2.ListaProduto()
-
-
-
-# c.CadastrarCliente(c)
-# c.Login("Maria","123")
-# print("--------------------------")
-# g.CadastrarGerente(g)
-
-# g.Login("gerson", "123")
-
-# usuario = input("informe o usuario")
-# senha = input("informe a senha: ")
-# nome = input("informe o nome")
-# enderco = input("informe o enderco")
-# c = Cliente(usuario, senha, nome, enderco)
-
-# print('exibir informaçao \n')
-# c.Exibir_informacao()
+    elif op == '3':
+        print("Saindo do sistema.....")
+        break  # Saia do loop principal

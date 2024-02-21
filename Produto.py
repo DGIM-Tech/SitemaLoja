@@ -18,7 +18,7 @@ class Produto:
             self.preco = novo_preco
             print(f"Produto atulizado: R$ {self.preco}")
         else:
-            print("Apenas o genre logado pode remover produtos")
+            print("Apenas o genre logado pode atualizar produtos")
     def remover_da_categoria(self):
         if self.gerenteLogado:
             if self.categoria:
